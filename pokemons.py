@@ -1,0 +1,42 @@
+import requests
+
+def get_pokemon_list():
+    """Получить список первых 20 покемонов"""
+    url = "https://pokeapi.co/api/v2/pokemon?limit=20"
+    
+    response = requests.get(url)
+
+    data = response.json()
+    pokemons = data['results']
+        
+    print("Список первых 20 покемонов:")
+    for i, pokemon in enumerate(pokemons, 1):
+        print(f"{i}. {pokemon['name']}")
+
+
+
+def get_pokemon_details(pokemon_name):
+    """Получить детальную информацию о покемоне"""
+    url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_name.lower()}"
+    
+    try:
+        response = requests.get(url)
+        
+        data = response.json()
+
+        name = data['name']
+        types = [type_data['type']['name'] for type_data in data['types']]
+        weight = data['weight']
+        height = data['height']
+        abilities = [ability_data['ability']['name'] for ability_data in data['abilities']]
+        
+        print(f"Информация о покемоне {name}:")
+        print(f"Имя: {name}")
+        print(f"Тип: {', '.join(types)}")
+        print(f"Вес: {weight}")
+        print(f"Рост: {height}")
+        print(f"Способности: {', '.join(abilities)}")
+        
+    except requests.exceptions.HTTPError:
+        print(f"Покемон '{pokemon_name}' не найден!")
+
