@@ -1,0 +1,25 @@
+# Django
+*.log
+*.pot
+*.pyc
+pycache/
+db.sqlite3
+media/
+
+# Virtual environment
+venv/
+.env/
+env/
+ENV/
+virtualenv/
+.venv/
+../venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Django secret key
+.env

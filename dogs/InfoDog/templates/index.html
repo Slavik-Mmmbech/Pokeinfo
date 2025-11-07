@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DogAPI Практика</title>
+</head>
+<body>
+    <h1>Добро пожаловать в DogAPI!</h1>
+
+    <p><a href="{% url 'get_breeds' %}">Посмотреть список всех пород</a></p>
+
+    <hr>
+
+    <h2>Получить фотографии собак</h2>
+    <form action="{% url 'get_dog_images' %}" method="post">
+        {% csrf_token %}
+        <label for="breeds_input">Введите породы через запятую:</label><br>
+        <input type="text" id="breeds_input" name="breeds" placeholder="например, african, chow, dingo">
+        <button type="submit">Показать фотографии!</button>
+    </form>
+</body>
+</html>

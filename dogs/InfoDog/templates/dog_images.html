@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Фотографии собак</title>
+</head>
+<body>
+    <h1>Фотографии ваших собак!</h1>
+
+    {% for breed, image_url in breeds_with_images %}
+        <div>
+            <h3>Порода: {{ breed }}</h3>
+            {% if image_url %}
+                <img src="{{ image_url }}" alt="Фото породы {{ breed }}" style="max-width: 500px;">
+            {% else %}
+                <p>Не удалось загрузить изображение для породы "{{ breed }}". Проверьте правильность написания.</p>
+            {% endif %}
+        </div>
+        <hr>
+    {% empty %}
+        <p>Вы не ввели ни одной породы.</p>
+    {% endfor %}
+
+    <a href="{% url 'index' %}">Вернуться на главную и попробовать снова</a>
+</body>
+</html>

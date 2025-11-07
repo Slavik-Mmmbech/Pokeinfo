@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список всех пород</title>
+</head>
+<body>
+    <h1>Список всех пород собак</h1>
+    <ol>
+        {% for breed in breeds_list %}
+            <li>{{ breed }}</li>
+        {% empty %}
+            <li>Не удалось загрузить список пород.</li>
+        {% endfor %}
+    </ol>
+    <a href="{% url 'index' %}">Вернуться на главную</a>
+</body>
+</html>
